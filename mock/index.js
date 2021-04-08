@@ -8,7 +8,7 @@ import getToken from './getToken'
 
 let data = [].concat(navlist, login, echarts, table, groupList, getToken)
 
-data.forEach(function(res){
+data.forEach(function(res){// 模拟访问路径及数据
     Mock.mock(res.path, res.data)
 })
 

@@ -27,7 +27,11 @@ const mutations = {
 const actions = {
     // 邮箱登录
     loginByEmail({ commit }, userInfo) {
+        console.log("commit:",commit)
+        console.log("userInfo:",userInfo)
         return new Promise((resolve) => {
+            // 可以通过给 axios传递对应的参数来定制请求
+            // axios(config)
             axios({
                 url: '/login',
                 method: 'post',
@@ -35,7 +39,9 @@ const actions = {
                     ...userInfo
                 }
             }).then(res => {
+                console.log("res:",res)
                 if(res.login){
+                    // 设置token到cookie
                     commit('setToken', res.token)
                     commit('user/setName', res.name, { root: true })
                 }
